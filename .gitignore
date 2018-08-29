@@ -2,3 +2,4 @@
 pro_rust/chap2/hello/Cargo.lock
 *.rs~
 pro_rust/chap2/hello/target/*
+*.toml~
