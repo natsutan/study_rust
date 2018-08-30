@@ -3,6 +3,8 @@ pro_rust/chap2/hello/Cargo.lock
 *.rs~
 pro_rust/chap2/hello/target/*
 *.toml~
-pro_rust/chap2/iron-gcd/Cargo.lock
+pro_rust/chap2/iron-gcd/
 pro_rust/chap2/iron-gcd/target/*
 
+pro_rust/chap2/mandelbrot/Cargo.lock
+pro_rust/chap2/mandelbrot/target/*
