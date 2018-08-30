@@ -37,6 +37,20 @@ fn test_parse_pair() {
 }
 
 
+fn parse_complex(s: &str) -> Option<Complex<f64>> {
+    match parse_pair(s, ',') {
+        Some((re, im)) => Some(Complex {re, im}),
+        None => None
+    }
+}
+
+#[test]
+fn test_parse_comlex(){
+    assert_eq!(parse_complex("1.23,-0.0625"),
+               Some(Complex{ re: 1.23, im: -0.0625 }));
+    assert_eq!(parse_complex(",-0.6"),
+               None);
+}
 
 fn main() {
     println!("Hello, world!");
