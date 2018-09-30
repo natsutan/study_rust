@@ -5,7 +5,6 @@ use std::io::prelude::*;
 
 extern crate serde_json;
 use serde_json::{Value, Error};
-use std::collections::BTreeMap;
 
 static DATA_DIR: &'static str = "../data/";
 static OUT_FILE: &'static str = "ret.md";
@@ -15,7 +14,7 @@ fn list_json(dir:&str) -> Vec<String> {
     let paths = fs::read_dir(dir).unwrap();
     for path in paths {
         let mut p = path.unwrap().path();
-        let f = format!("{:?}", p).replace("\"", "");
+        let f = p.to_string_lossy().to_string();
         json_list.push(f);
     }
 
