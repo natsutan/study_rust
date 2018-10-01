@@ -8,3 +8,7 @@ pro_rust/chap2/iron-gcd/target/*
 
 pro_rust/chap2/mandelbrot/Cargo.lock
 pro_rust/chap2/mandelbrot/target/*
+*.json
+slack_md/stack_md/Cargo.lock
+slack_md/stack_md/ret.md
+slack_md/stack_md/target/*

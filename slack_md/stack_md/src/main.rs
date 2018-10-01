@@ -37,9 +37,6 @@ fn write_md(fp:&mut std::fs::File, json:String) -> Result<(), Error> {
         },
         _ => ()
     }
-//    for v in values {
-//        println!("{:?}", v);
-//    }
     Ok(())
 }
 
@@ -49,8 +46,6 @@ fn main() {
 
     for json in jsons {
         write_md(&mut fp, json);
-
     }
-
 }
 
