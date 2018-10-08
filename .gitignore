@@ -12,3 +12,9 @@ pro_rust/chap2/mandelbrot/target/*
 slack_md/stack_md/Cargo.lock
 slack_md/stack_md/ret.md
 slack_md/stack_md/target/*
+slack_md/.idea/*
+slib_cook/chap1/.idea/*
+slack_md/.idea/workspace.xml
+slib_cook/chap1/.idea/vcs.xml
+slib_cook/chap1/Cargo.lock
+slib_cook/chap1/target/*
