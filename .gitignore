@@ -18,3 +18,5 @@ slack_md/.idea/workspace.xml
 slib_cook/chap1/.idea/vcs.xml
 slib_cook/chap1/Cargo.lock
 slib_cook/chap1/target/*
+graph/shortest/target/*
+graph/shortest/target/debug/*
