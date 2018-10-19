@@ -2,49 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58d47966-1bd3-4824-b7f5-d7d738ff7631" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/.cargo-lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/.fingerprint/shortest-3991087a4f82ed47/bin-shortest-3991087a4f82ed47" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/.fingerprint/shortest-3991087a4f82ed47/dep-bin-shortest-3991087a4f82ed47" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/.fingerprint/shortest-79e2dea807d4cc78/bin-shortest-79e2dea807d4cc78" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/.fingerprint/shortest-79e2dea807d4cc78/dep-bin-shortest-79e2dea807d4cc78" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/.fingerprint/shortest-b6af345c8f6c9b21/dep-test-bin-shortest-b6af345c8f6c9b21" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/.fingerprint/shortest-b6af345c8f6c9b21/test-bin-shortest-b6af345c8f6c9b21" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/deps/libshortest-79e2dea807d4cc78.rmeta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/deps/libshortest-b6af345c8f6c9b21.rmeta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/deps/shortest-3991087a4f82ed47.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/deps/shortest-3991087a4f82ed47.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/deps/shortest-3991087a4f82ed47.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/deps/shortest-79e2dea807d4cc78.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/deps/shortest-b6af345c8f6c9b21.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-36j1vheiyqnth/s-f5qeuyqdwj-1sfmlx8-3fa2ctuu51ah7/10ygozpgsu0ud2lu.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-36j1vheiyqnth/s-f5qeuyqdwj-1sfmlx8-3fa2ctuu51ah7/1y16o1qfye96o7m0.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-36j1vheiyqnth/s-f5qeuyqdwj-1sfmlx8-3fa2ctuu51ah7/3rngp6bm2u2q5z0y.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-36j1vheiyqnth/s-f5qeuyqdwj-1sfmlx8-3fa2ctuu51ah7/4oc10dk278mpk1vy.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-36j1vheiyqnth/s-f5qeuyqdwj-1sfmlx8-3fa2ctuu51ah7/4xq48u46a1pwiqn7.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-36j1vheiyqnth/s-f5qeuyqdwj-1sfmlx8-3fa2ctuu51ah7/576akgrmbfntrx8a.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-36j1vheiyqnth/s-f5qeuyqdwj-1sfmlx8-3fa2ctuu51ah7/dep-graph.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-36j1vheiyqnth/s-f5qeuyqdwj-1sfmlx8-3fa2ctuu51ah7/query-cache.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-36j1vheiyqnth/s-f5qeuyqdwj-1sfmlx8-3fa2ctuu51ah7/work-products.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-36j1vheiyqnth/s-f5qeuyqdwj-1sfmlx8.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-3hh5v8gxnab95/s-f5qetsxjvy-hcduwa-3r1i6g6x9f9ej/dep-graph.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-3hh5v8gxnab95/s-f5qetsxjvy-hcduwa-3r1i6g6x9f9ej/query-cache.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-3hh5v8gxnab95/s-f5qetsxjvy-hcduwa-3r1i6g6x9f9ej/work-products.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-3hh5v8gxnab95/s-f5qetsxjvy-hcduwa.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-o5zulwog57o7/s-f5qetsxjvy-dipezg-23kp91ska4kzp/dep-graph.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-o5zulwog57o7/s-f5qetsxjvy-dipezg-23kp91ska4kzp/query-cache.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-o5zulwog57o7/s-f5qetsxjvy-dipezg-23kp91ska4kzp/work-products.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/incremental/shortest-o5zulwog57o7/s-f5qetsxjvy-dipezg.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/libshortest-b6af345c8f6c9b21.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/libshortest-b6af345c8f6c9b21.rmeta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/libshortest.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/libshortest.rmeta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/shortest.d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/shortest.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/debug/shortest.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/g.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,34 +16,46 @@
     <session id="1907141333">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.14" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.14" value="2" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.24" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="rs" value="1" />
+          <entry key="bat" value="1" />
+          <entry key="dot" value="1" />
+          <entry key="jpg" value="1" />
+          <entry key="png" value="1" />
+          <entry key="rs" value="2" />
           <entry key="toml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Rust" value="1" />
+          <entry key="Image" value="2" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="Rust" value="2" />
+          <entry key="com/webschik/doT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="rs" value="3" />
+          <entry key="bat" value="1" />
+          <entry key="dot" value="2" />
+          <entry key="rs" value="374" />
           <entry key="toml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="5" />
-          <entry key="Rust" value="3" />
+          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="Rust" value="374" />
+          <entry key="com/webschik/doT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.run.usages" />
@@ -94,12 +66,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.rs">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Cargo.toml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -116,8 +92,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main.rs" />
         <option value="$PROJECT_DIR$/Cargo.toml" />
+        <option value="$PROJECT_DIR$/g.bat" />
+        <option value="$PROJECT_DIR$/graph.dot" />
+        <option value="$PROJECT_DIR$/src/main.rs" />
       </list>
     </option>
   </component>
@@ -172,7 +150,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539579196367" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539925691165" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -213,16 +191,21 @@
       <updated>1539574606909</updated>
       <workItem from="1539574609140" duration="825000" />
       <workItem from="1539579264835" duration="13000" />
+      <workItem from="1539598020185" duration="742000" />
+      <workItem from="1539598820383" duration="84000" />
+      <workItem from="1539907732460" duration="5329000" />
+      <workItem from="1539992016423" duration="35000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="838000" />
+    <option name="totallyTimeSpent" value="7028000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="704" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2534413" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27125505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -259,8 +242,32 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/q.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/g.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/graph.dot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.rs">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Cargo.toml">
       <provider selected="true" editor-type-id="text-editor">
