@@ -20,3 +20,8 @@ slib_cook/chap1/Cargo.lock
 slib_cook/chap1/target/*
 graph/shortest/target/*
 graph/shortest/target/debug/*
+graph/sa/.idea/*
+graph/sa/target/*
+graph/sa/Cargo.lock
+graph/shortest/.idea/workspace.xml
+graph/sa/.idea/dictionaries/natu.xml
