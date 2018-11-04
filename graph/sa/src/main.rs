@@ -12,14 +12,9 @@ struct Net {
 
 type Block =  [u32; 10];
 
+//ネットリストの定義
 fn make_netlist() -> Vec<Net> {
     let mut netlist :Vec<Net> = Vec::new();
-
-// for debug
-//    let n1 = Net{nodes:vec![1, 2, 3, 4, 5], weight: 1};
-//    let n2 = Net{nodes:vec![6, 7, 8, 9, 10], weight: 1};
-//    let n1 = Net{nodes:vec![1,2,3,4,5,6], weight: 1};
-//    let n2 = Net{nodes:vec![9], weight: 1};
 
     let n1 = Net{nodes:vec![1, 2, 4, 5], weight: 1};
     let n2 = Net{nodes:vec![2, 3, 5], weight: 1};
@@ -46,6 +41,7 @@ fn make_netlist() -> Vec<Net> {
     netlist
 }
 
+//ランダムにブロックを振り分ける
 fn initial_block() -> Block {
     let mut rng = thread_rng();
     let mut new_block: Block = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -53,6 +49,8 @@ fn initial_block() -> Block {
     new_block
 }
 
+//引数のnetが、ABどちらかのブロックに入っていればtrue
+//AB両方のブロックにまたがっていればfalse
 fn same_area(block:&Block, net:&Net) -> bool {
     let block_a = &block[0..5];
     let block_b = &block[5..10];
@@ -60,22 +58,19 @@ fn same_area(block:&Block, net:&Net) -> bool {
     let contain_as: Vec<bool> = block_a.into_iter().map(|x| net.nodes.contains(x)).collect();
     let contain_bs: Vec<bool> = block_b.into_iter().map(|x| net.nodes.contains(x)).collect();
 
-//    println!("as_ {:?}", contain_as);
-//    println!("bs_ {:?}", contain_bs);
     let all_b = !contain_as.into_iter().fold(false, |all_a, x| all_a | x);
     let all_a = !contain_bs.into_iter().fold(false, |all_b, x| all_b | x);
-
-//    println!("{} {}", all_a, all_b);
 
     all_a || all_b
 }
 
-
+//分割後のcost計算
 fn cost(block:&Block, netlist:&Vec<Net>) -> u32 {
     // blockの前半が、分割したエリアに全て入ればそのまま、そうで無ければそのネットに対応したweightを加算する。
     netlist.into_iter().fold(0,|cost, net| if same_area(&block, net) {cost} else {cost + net.weight} )
 }
 
+//ランダムに2つのノードを入れ替える
 fn swap_node(block:&Block) -> Block {
     let mut new_block = block.clone();
     let mut rng = thread_rng();
@@ -95,6 +90,8 @@ fn cost_test(){
     assert_eq!(cur_cost, 10)
 }
 
+//メトロポリス基準
+// random < exp(- d_cost / t)
 fn random(delta_cost:i32, t:f32) -> bool {
     let mut rng = thread_rng();
     let rand_value = rng.gen_range(0.0, 1.0);
@@ -106,44 +103,42 @@ fn random(delta_cost:i32, t:f32) -> bool {
 
 fn simulated_annealing(mut t:f32, alpha:f32, beta:f32, max_time:f32, mut m:f32 , netlist:&Vec<Net> ) -> Block
 {
-    //let mut block:[u32; 10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let cur_s :Block = initial_block();
+    let mut cur_s :Block = initial_block();
     let mut time:f32 = 0.0;
-    let best_s: Block = cur_s.clone();
+    let mut best_s: Block = cur_s.clone();
 
-//    println!("cost = {}　block_a = {:?} block_b = {:?} ", cur_cost,  &block[0..5], &block[5..10]);
     while {
-        let cur_cost = cost(&cur_s, &netlist);
-        let best_cost = cost(&best_s, &netlist);
-
-        let (cur_s, best_s) = metropolis(cur_s, cur_cost, best_s, best_cost, t, m, netlist);
-        println!("end of metro cur_s = {:?}, best_s = {:?}", cur_s, best_s);
+        let result = metropolis(cur_s, best_s, t, m, netlist);
+        cur_s = result[0];
+        best_s = result[1];
 
         time = time + m * beta;
         t = alpha * t;
         m = m * beta;
-        println!("time = {}, t = {} cost = {}", time, t, cost(&best_s, &netlist));
         time < max_time
     } {}
-    cur_s
+    best_s
 }
 
-fn metropolis(mut cur_s: Block, cur_cost:u32, mut best_s: Block, best_cost:u32, t:f32, m:f32, netlist:&Vec<Net>) ->(Block, Block)
+fn metropolis(mut cur_s: Block, mut best_s: Block, t:f32, m:f32, netlist:&Vec<Net>) ->[Block;2]
 {
+    let cur_cost = cost(&cur_s, netlist);
+    let mut best_cost = cost(&best_s, netlist);
+
+
     for _x in 0 .. m as u32 {
         //ノードを一つランダムに交換
         let new_s = swap_node(&cur_s);
-
         let new_cost = cost(&new_s, netlist);
         let delta_cost = new_cost as i32 - cur_cost as i32;
 
-        println!("cost = {}　block_a = {:?} block_b = {:?}", new_cost,  &new_s[0..5], &new_s[5..10]);
+        println!("new_cost = {}　best_cost = {} block_a = {:?} block_b = {:?}", new_cost, best_cost,  &new_s[0..5], &new_s[5..10]);
 
         if delta_cost < 0 {
             cur_s = new_s;
             if new_cost < best_cost {
-                println!("*update best_s ={:?},  new_s = {:?}", best_s, new_s);
                 best_s = new_s;
+                best_cost = cost(&best_s, netlist);
             }
         } else {
             if random(delta_cost, t) {
@@ -151,7 +146,7 @@ fn metropolis(mut cur_s: Block, cur_cost:u32, mut best_s: Block, best_cost:u32, 
             }
         }
     }
-    (cur_s, best_s)
+    [cur_s, best_s]
 }
 
 
