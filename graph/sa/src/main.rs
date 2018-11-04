@@ -10,6 +10,7 @@ struct Net {
     weight:u32,
 }
 
+type Block =  [u32; 10];
 
 fn make_netlist() -> Vec<Net> {
     let mut netlist :Vec<Net> = Vec::new();
@@ -45,14 +46,14 @@ fn make_netlist() -> Vec<Net> {
     netlist
 }
 
-fn initial_block() -> [u32; 10] {
+fn initial_block() -> Block {
     let mut rng = thread_rng();
-    let mut block:[u32;10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    block.shuffle(&mut rng);
-    block
+    let mut new_block: Block = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    new_block.shuffle(&mut rng);
+    new_block
 }
 
-fn same_area(block:&[u32;10], net:&Net) -> bool {
+fn same_area(block:&Block, net:&Net) -> bool {
     let block_a = &block[0..5];
     let block_b = &block[5..10];
     //全てtrue、もしくは全てfalseの時trueを返す
@@ -70,12 +71,12 @@ fn same_area(block:&[u32;10], net:&Net) -> bool {
 }
 
 
-fn cost(block:&[u32;10], netlist:&Vec<Net>) -> u32 {
+fn cost(block:&Block, netlist:&Vec<Net>) -> u32 {
     // blockの前半が、分割したエリアに全て入ればそのまま、そうで無ければそのネットに対応したweightを加算する。
     netlist.into_iter().fold(0,|cost, net| if same_area(&block, net) {cost} else {cost + net.weight} )
 }
 
-fn swap_node(block:&[u32;10]) -> [u32;10] {
+fn swap_node(block:&Block) -> Block {
     let mut new_block = block.clone();
     let mut rng = thread_rng();
 
@@ -94,34 +95,76 @@ fn cost_test(){
     assert_eq!(cur_cost, 10)
 }
 
+fn random(delta_cost:i32, t:f32) -> bool {
+    let mut rng = thread_rng();
+    let rand_value = rng.gen_range(0.0, 1.0);
+    let d_cost:f64 = delta_cost as f64;
+
+    rand_value < std::f64::consts::E.powf(- d_cost / t as f64)
+}
 
 
-fn simulated_annealing(s0:u32, best_s:u32, t:f32, alpha:f32, beta:f32, max_time:f32, m:f32, netlist:&Vec<Net> ) -> [u32;10]
+fn simulated_annealing(mut t:f32, alpha:f32, beta:f32, max_time:f32, mut m:f32 , netlist:&Vec<Net> ) -> Block
 {
     //let mut block:[u32; 10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    let mut block = initial_block();
+    let cur_s :Block = initial_block();
+    let mut time:f32 = 0.0;
+    let best_s: Block = cur_s.clone();
 
-    let cur_cost = cost(&block, &netlist);
-    println!("cost = {}　block_a = {:?} block_b = {:?} ", cur_cost,  &block[0..5], &block[5..10]);
+//    println!("cost = {}　block_a = {:?} block_b = {:?} ", cur_cost,  &block[0..5], &block[5..10]);
+    while {
+        let cur_cost = cost(&cur_s, &netlist);
+        let best_cost = cost(&best_s, &netlist);
 
-    let new_block = swap_node(&block);
-    println!("swap　block_a = {:?} block_b = {:?} ",  &new_block[0..5], &new_block[5..10]);
+        let (cur_s, best_s) = metropolis(cur_s, cur_cost, best_s, best_cost, t, m, netlist);
+        println!("end of metro cur_s = {:?}, best_s = {:?}", cur_s, best_s);
 
-
-    new_block
-
+        time = time + m * beta;
+        t = alpha * t;
+        m = m * beta;
+        println!("time = {}, t = {} cost = {}", time, t, cost(&best_s, &netlist));
+        time < max_time
+    } {}
+    cur_s
 }
+
+fn metropolis(mut cur_s: Block, cur_cost:u32, mut best_s: Block, best_cost:u32, t:f32, m:f32, netlist:&Vec<Net>) ->(Block, Block)
+{
+    for _x in 0 .. m as u32 {
+        //ノードを一つランダムに交換
+        let new_s = swap_node(&cur_s);
+
+        let new_cost = cost(&new_s, netlist);
+        let delta_cost = new_cost as i32 - cur_cost as i32;
+
+        println!("cost = {}　block_a = {:?} block_b = {:?}", new_cost,  &new_s[0..5], &new_s[5..10]);
+
+        if delta_cost < 0 {
+            cur_s = new_s;
+            if new_cost < best_cost {
+                println!("*update best_s ={:?},  new_s = {:?}", best_s, new_s);
+                best_s = new_s;
+            }
+        } else {
+            if random(delta_cost, t) {
+                cur_s = new_s;
+            }
+        }
+    }
+    (cur_s, best_s)
+}
+
 
 
 fn main() {
     let netlist = make_netlist();
 
-    let T0 = 10.0;
+    let t0 = 10.0;
     let alpha = 0.9;
     let beta = 1.0;
     let m = 10.0;
 
-    let best_block = simulated_annealing(0, 0, T0, alpha, beta, 0.0, 0.0, &netlist);
+    let best_block = simulated_annealing(t0, alpha, beta, 100.0, m, &netlist);
     let best_cost = cost(&best_block, &netlist);
 
     println!("cost = {}　block_a = {:?} block_b = {:?} ", best_cost,  &best_block[0..5], &best_block[5..10]);
