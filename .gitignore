@@ -25,3 +25,6 @@ graph/sa/target/*
 graph/sa/Cargo.lock
 graph/shortest/.idea/workspace.xml
 graph/sa/.idea/dictionaries/natu.xml
+graph/sa/result/.idea/*
+graph/sa/result/*.txt
+graph/sa/result/back/*.txt

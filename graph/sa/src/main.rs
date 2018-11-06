@@ -100,7 +100,7 @@ fn random(delta_cost:i32, t:f32) -> bool {
     rand_value < std::f64::consts::E.powf(- d_cost / t as f64)
 }
 
-
+//シミュレーテッドアニーリングの実行
 fn simulated_annealing(mut t:f32, alpha:f32, beta:f32, max_time:f32, mut m:f32 , netlist:&Vec<Net> ) -> Block
 {
     let mut cur_s :Block = initial_block();
@@ -150,7 +150,6 @@ fn metropolis(mut cur_s: Block, mut best_s: Block, t:f32, m:f32, netlist:&Vec<Ne
 }
 
 
-
 fn main() {
     let netlist = make_netlist();
 
@@ -162,6 +161,7 @@ fn main() {
     let best_block = simulated_annealing(t0, alpha, beta, 100.0, m, &netlist);
     let best_cost = cost(&best_block, &netlist);
 
+    //最終結果
     println!("cost = {}　block_a = {:?} block_b = {:?} ", best_cost,  &best_block[0..5], &best_block[5..10]);
 
 }
