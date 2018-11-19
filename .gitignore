@@ -28,3 +28,7 @@ graph/sa/.idea/dictionaries/natu.xml
 graph/sa/result/.idea/*
 graph/sa/result/*.txt
 graph/sa/result/back/*.txt
+slib_cook/chap2/.idea/*
+slib_cook/chap2/target/*
+slib_cook/chap2/Cargo.lock
+slib_cook/chap2/.idea/vcs.xml
