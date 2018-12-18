@@ -1,5 +1,57 @@
 fn main()
 {
+    //配列要素の取り出し
+    let cpus = vec!["sh", "x86", "arm", "mips"];
+
+    //getで取り出す。
+    let second_cpu = cpus.get(1);
+    if let Some(second_cpu) = second_cpu {
+        println!("second spu = {}", second_cpu);
+    }
+
+    //unwrap
+    let last_cpu = cpus.last().unwrap();
+    println!("last_cpu = {}", last_cpu);
+
+    //no check
+    let first_cpu = cpus[0];
+    println!("first cpu = {}", first_cpu);
+
+    //error
+    //let cpu = cpus[10];
+    //println!("cpu = {}", cpu);
+
+    //分割と結合
+    let mut cpus = vec!["sh", "x86", "arm", "mips"];
+    let mut later = cpus.split_off(2);
+    println!("cpus = {:?}, later = {:?}", cpus, later);
+    //cpus = ["sh", "x86"], later = ["arm", "mips"]
+
+    cpus.append(&mut later);
+    println!("cpus = {:?}, later = {:?}", cpus, later);
+    //cpus = ["sh", "x86", "arm", "mips"], later = []
+
+    //retain
+    let mut cpus = vec!["sh", "x86", "sh2", "sh4", "arm", "mips"];
+    cpus.retain(|name| name.starts_with("sh"));
+    println!("cpus = {:?}", cpus);
+    //cpus = ["sh", "sh2", "sh4"]
+
+    //drain
+    let mut cpus = vec!["sh", "x86", "sh2", "sh4", "arm", "mips"];
+    for cpu in cpus.drain(..2) {
+        println!("use {}", cpu);
+    }
+    println!("cpus {:?}", cpus);
+    //cpus ["sh2", "sh4", "arm", "mips"]
+
+    let mut nums = vec![1, 2, 3, 4, 5, 6];
+    let second_num = nums.swap_remove(1);
+    println!("nums = {:?}, second_num = {}", nums, second_num);
+    //nums = [1, 6, 3, 4, 5], second_num = 2
+
+    println!("");
+
     let mut fruits = Vec::new();
     fruits.push("banana");
     fruits.push("tomato");
@@ -39,10 +91,15 @@ fn main()
     println!("{}", names.contains(&"Alex"));
 
     //重複の削除
-    let mut nums = vec![1, 2, 2, 2, 3, 3, 4, 5, 1,  5];
+    let mut nums = vec![1, 2, 2, 2, 3, 3, 4, 5, 1, 5];
+    nums.dedup();
+    println!("deduped {:?}", nums);
+
+    let mut nums = vec![1, 2, 2, 2, 3, 3, 4, 5, 1, 5];
     nums.sort();
     nums.dedup();
     println!("deduped {:?}", nums);
+    //deduped [1, 2, 3, 4, 5]
 
     nums.reverse();
     println!("reverse {:?}", nums);
