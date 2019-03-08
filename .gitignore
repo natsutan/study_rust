@@ -32,3 +32,8 @@ slib_cook/chap2/.idea/*
 slib_cook/chap2/target/*
 slib_cook/chap2/Cargo.lock
 slib_cook/chap2/.idea/vcs.xml
+slib_cook/.idea/
+pro_rust/.idea/
+pro_rust/chap15/iter/target/debug/
+pro_rust/chap15/iter/Cargo.lock
+pro_rust/.idea/vcs.xml
