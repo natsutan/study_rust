@@ -1,4 +1,3 @@
-
 pro_rust/chap2/hello/Cargo.lock
 *.rs~
 pro_rust/chap2/hello/target/*
@@ -37,3 +36,6 @@ pro_rust/.idea/
 pro_rust/chap15/iter/target/debug/
 pro_rust/chap15/iter/Cargo.lock
 pro_rust/.idea/vcs.xml
+HODSA/.idea/
+HODSA/chap1/target/
+HODSA/chap1/Cargo.lock
