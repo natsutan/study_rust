@@ -1,15 +1,16 @@
 use std::cell::RefCell;
 use std::rc::Rc;
+use core::borrow::Borrow;
 
 type SingleLink = Option<Rc<RefCell<Node>>>;
 
 #[derive(Clone)]
-struct Node {
+pub struct Node {
     value:String,
     next:SingleLink
 }
 
-struct TransactionLog {
+pub struct TransactionLog {
     head:SingleLink,
     tail:SingleLink,
     pub length:u32
@@ -45,14 +46,29 @@ impl TransactionLog {
 
 }
 
+pub fn print_log(log: &TransactionLog) {
+    match log.head.borrow() {
+        Some(n) => print_node_str(n),
+        None => ()
+    }
+    ()
+}
 
+pub fn print_node_str(node_rc: &Rc<RefCell<Node>>) {
+    let node= node_rc.borrow_mut();
+    println ! ("LOG:\"{}\"", &node.value);
+    match &node.next {
+        Some(n) => print_node_str(&n),
+        None => ()
+    }
+}
 
 fn main() {
-    println!("Hello, List!");
 
     let mut log = TransactionLog::new_empty();
     log.append("test1".to_string());
     log.append("test2".to_string());
+    print_log(&log);
 
-    println!("{}", log.length);
+
 }
