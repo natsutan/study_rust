@@ -44,6 +44,19 @@ impl TransactionLog {
         self.tail = Some(new);
     }
 
+    pub fn pop(&mut self) -> Option<String> {
+        self.head.take().map( |head| {
+            if let Some(next) = head.borrow_mut().next.take() {
+                self.head = Some(next);
+            } else {
+                self.tail.take();
+            }
+            self.length -= 1;
+            Rc::try_unwrap(head).ok().expect("Something is terribly wrong").into_inner().value
+        }
+        )
+    }
+
 }
 
 pub fn print_log(log: &TransactionLog) {
@@ -63,12 +76,15 @@ pub fn print_node_str(node_rc: &Rc<RefCell<Node>>) {
     }
 }
 
+
+
 fn main() {
 
     let mut log = TransactionLog::new_empty();
     log.append("test1".to_string());
     log.append("test2".to_string());
     print_log(&log);
+
 
 
 }
