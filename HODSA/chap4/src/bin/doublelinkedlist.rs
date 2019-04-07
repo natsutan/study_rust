@@ -2,32 +2,44 @@
 
 use std::cell::{Ref, RefCell};
 use std::rc::Rc;
-//use alloc::vec::IntoIter;
 
 
 type Link = Option<Rc<RefCell<Node>>>;
 
-#[derive(Debug, Clone)]
-pub struct Node {
+#[derive(Clone)]
+struct Node {
     value:String,
-    next:Link,
-    prev:Link
+    next: Link,
+    prev: Link
 }
 
-#[derive(Debug, Clone)]
+#[derive(Clone)]
 pub struct BetterTransactionLog {
-    head:Link,
-    tail:Link,
-    pub length:u64
+    head: Link,
+    tail: Link,
+    pub length: u64
 }
+
+impl IntoIterator for BetterTransactionLog {
+    type Item = String;
+    type IntoIter = ListIterator;
+
+    fn into_iter(self) -> Self::IntoIter {
+        ListIterator::new(self.head)
+    }
+}
+
 
 pub struct ListIterator {
-    current:Link,
+    current: Link,
 }
 
+
 impl ListIterator {
-    fn new(start_at:Link) -> ListIterator {
-        ListIterator { current: start_at}
+    fn new(start_at: Link) -> ListIterator {
+        ListIterator {
+            current: start_at
+        }
     }
 }
 
@@ -50,21 +62,11 @@ impl Iterator for ListIterator {
 
 }
 
-impl IntoIterator for BetterTransactionLog {
-    type Item = String;
-    type IntoIter = ListIterator;
-
-    fn into_iter(self) -> Self::IntoIter {
-        ListIterator::new(self.head)
-    }
-}
-
 
 impl DoubleEndedIterator for ListIterator {
     fn next_back(&mut self) -> Option<String> {
         let current = &self.current;
         let mut result = None;
-
         self.current = match current{
             Some(ref current) => {
                 let current = current.borrow();
@@ -80,9 +82,9 @@ impl DoubleEndedIterator for ListIterator {
 impl Node {
     fn new(value:String) -> Rc<RefCell<Node>> {
         Rc::new(RefCell::new(Node {
-            value,
-            next:None,
-            prev:None
+            value: value,
+            next: None,
+            prev: None
         }))
     }
 }
@@ -90,9 +92,9 @@ impl Node {
 impl BetterTransactionLog {
     pub fn new_empty() -> BetterTransactionLog {
         BetterTransactionLog {
-            head:None,
-            tail:None,
-            length:0
+            head: None,
+            tail: None,
+            length: 0,
         }
     }
 
@@ -103,7 +105,7 @@ impl BetterTransactionLog {
                 old.borrow_mut().next = Some(new.clone());
                 new.borrow_mut().prev = Some(old);
             },
-            None => self.head = Some(new.clone())
+            None => self.head = Some(new.clone()),
         }
         self.length += 1;
         self.tail = Some(new);
@@ -117,7 +119,11 @@ impl BetterTransactionLog {
                 self.tail.take();
             }
             self.length -= 1;
-            Rc::try_unwrap(head).ok().expect("Something is terribly wrong").into_inner().value
+            Rc::try_unwrap(head)
+                .ok()
+                .expect("Something is terribly wrong")
+                .into_inner()
+                .value
         }
         )
     }
@@ -140,13 +146,17 @@ fn main() {
     log.append("test3".to_string());
 
     let mut iter = log.clone().into_iter();
-    for l in iter {
-        println!("{}", l)
-    }
 
-    let mut biter = log.clone().back_iter();
-    for l in biter {
-        println!("{}", l)
+    println!("{}", iter.next().unwrap());
+    println!("{}", iter.next().unwrap());
+    println!("{}", iter.next_back().unwrap());
+    println!("{}", iter.next_back().unwrap());
+    println!("{}", iter.next().unwrap());
+
+    println!("new iter");
+    let iter = log.clone().into_iter();
+    for l in iter {
+        println!("{}", l);
     }
 
 }
