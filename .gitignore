@@ -42,3 +42,6 @@ HODSA/chap1/Cargo.lock
 HODSA/chap3/target/
 HODSA/chap4/target/
 .idea/
+Jissen/chap2/rpn/target/debug/
+memory/mem/target/debug/
+memory/mem/target/release/
