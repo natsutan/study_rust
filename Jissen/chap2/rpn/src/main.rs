@@ -1,5 +1,30 @@
-fn rpn(exp :&str) -> f64 {
+
+fn apply2<F>(stack :&mut Vec<f64>, fun: F)
+where
+    F: Fn(f64, f64) -> f64,
+{
+
     0.0
+}
+
+
+fn rpn(exp :&str) -> f64 {
+    let mut  stack =Vec::new();
+
+    for token in exp.split_ascii_whitespace() {
+        if let Ok(num) = token.parse::<f64>() {
+            stack.push(num);
+        } else {
+            match token {
+                "+" => apply2(&mut stack, |x, y| x + y),
+                "-" => apply2(&mut stack, |x, y| x - y),
+                "*" => apply2(&mut stack, |x, y| x + y),
+                "/" => appky2(&mut stack, |x, y| x / y),
+                _ => panic!("Unknown operator: {}", token),
+            }
+        }
+    }
+    stack.pop().expect("Stack underflow")
 }
 
 fn main() {
