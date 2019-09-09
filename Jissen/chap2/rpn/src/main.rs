@@ -1,10 +1,13 @@
 
-fn apply2<F>(stack :&mut Vec<f64>, fun: F)
-where
-    F: Fn(f64, f64) -> f64,
+fn apply2<F>(stack :&mut Vec<f64>, fun: F)  where F: Fn(f64, f64) -> f64,
 {
+    if let (Some(y), Some(x)) = (stack.pop(), stack.pop()) {
+        let z = fun(x, y);
+        stack.push(z)
+    } else {
+        panic!("Stack Underflow")
+    }
 
-    0.0
 }
 
 
@@ -18,8 +21,8 @@ fn rpn(exp :&str) -> f64 {
             match token {
                 "+" => apply2(&mut stack, |x, y| x + y),
                 "-" => apply2(&mut stack, |x, y| x - y),
-                "*" => apply2(&mut stack, |x, y| x + y),
-                "/" => appky2(&mut stack, |x, y| x / y),
+                "*" => apply2(&mut stack, |x, y| x * y),
+                "/" => apply2(&mut stack, |x, y| x / y),
                 _ => panic!("Unknown operator: {}", token),
             }
         }
@@ -29,6 +32,8 @@ fn rpn(exp :&str) -> f64 {
 
 fn main() {
     let exp = "6.1 5.2 4.3 * + 3.4 2.5 / 1.6  * -";
+//    let exp = "6.1 5.2 4.3 * + ";
+//    let exp = "3.4 2.5 / 1.6 * ";
     let ans = rpn(exp);
 
     debug_assert_eq!("26.2840", format!("{:.4}", ans));
